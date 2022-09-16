@@ -52,6 +52,26 @@ struct node *appendNode(struct node *head, int newData)
     return head;
 }
 
+struct node *deleteNode(struct node *head, int dataToDelete)
+{
+    struct node *currentNode = head;
+
+    if (currentNode->data == dataToDelete)
+        return NULL;
+
+    while (currentNode->forward != head)
+    {
+        if (currentNode->data == dataToDelete)
+        {
+            currentNode->forward = currentNode->forward->forward;
+            return head;
+        }
+    }
+
+    cout << "Data was no where to be found " << endl;
+    return head;
+}
+
 int main()
 {
     struct node *head, *currentNode;
