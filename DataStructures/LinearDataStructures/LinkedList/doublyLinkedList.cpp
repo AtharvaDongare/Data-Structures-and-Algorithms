@@ -26,41 +26,50 @@ void displayNodesForward(struct node *head)
     }
 }
 
-int main()
+struct node *createNode(int newData)
 {
     struct node *head = NULL;
 
     head = (struct node *)malloc(sizeof(struct node));
 
-    head->data = 1;
     head->forward = NULL;
+    head->data = newData;
     head->backward = NULL;
 
-    struct node *first;
-    struct node *second;
-    struct node *third;
+    return head;
+}
 
-    first = (struct node *)malloc(sizeof(struct node));
-    second = (struct node *)malloc(sizeof(struct node));
-    third = (struct node *)malloc(sizeof(struct node));
+void appendNode(struct node **tail, int newData)
+{
+    struct node *newNode = (struct node *)malloc(sizeof(struct node *));
 
-    head->backward = NULL;
+    newNode->data = newData;
+    newNode->forward = NULL;
+    newNode->backward = *tail;
 
-    head->forward = first;
-    first->backward = head;
+    (*tail)->forward = newNode;
+    (*tail) = (*tail)->forward;
+}
 
-    first->forward = second;
-    first->data = 2;
-    second->backward = first;
+int main()
+{
+    struct node *head = NULL;
+    struct node *tail = NULL;
 
-    second->forward = third;
-    second->data = 3;
-    third->backward = second;
+    head = createNode(19);
+    tail = head;
 
-    third->forward = NULL;
-    third->data = 4;
+    for (int i = 0; i < 9; i++)
+    {
+        appendNode(&tail, i);
+    }
 
     displayNodesForward(head);
+    cout << endl
+         << endl;
+    displayNodesBackward(tail);
+
     cout << endl;
-    displayNodesBackward(third);
+
+    displayNodesForward(head);
 }
