@@ -1,72 +1,16 @@
 #include <iostream>
-
 using namespace std;
 
-// Creating the blue print for the nodes in the linked list
 struct node
 {
-    struct node *forward;
     int data;
+    struct node *forward;
 };
-
-struct node *addNodeToList(struct node *head, int data)
-{
-    cout << "test 0" << endl;
-    struct node *newData;
-    struct node *temp = head;
-
-    newData->data = data;
-    newData->forward = NULL;
-    cout << "test test test" << endl;
-    while (temp->forward)
-    {
-        cout << "test1" << endl;
-        temp = temp->forward;
-    }
-
-    temp->forward = newData;
-
-    return head;
-}
-
-struct node *createNode(int data)
-{
-    struct node *head;
-
-    head->data = data;
-    head->forward = NULL;
-
-    return head;
-}
-
-void deleteData(struct node *head, int data, int loc = -1)
-{
-    if (head->data == data)
-    {
-        *head = *(head->forward);
-        return;
-    }
-
-    struct node *temp = head;
-
-    while (temp->forward)
-    {
-        if (temp->data == data)
-        {
-            *temp = *(temp->forward);
-            cout << "Deletion completed !" << endl;
-        }
-    }
-
-    cout << "The data was not found in the linked list" << endl;
-}
 
 void displayAllNodes(struct node *head)
 {
-
-    cout << "Displaying all the information listed in the linked list" << endl;
-
-    while (head->forward)
+    cout << "Displaying all the nodes" << endl;
+    while (head)
     {
         cout << head->data << endl;
         head = head->forward;
@@ -75,22 +19,79 @@ void displayAllNodes(struct node *head)
     return;
 }
 
+struct node *appendNode(struct node *head, int dataNew)
+{
+    struct node *newNode = NULL, *temp = head;
+
+    cout << "Created the node with the listed data" << endl;
+
+    newNode = (struct node *)malloc(sizeof(struct node));
+    newNode->data = dataNew;
+    newNode->forward = NULL;
+
+    cout << "Iterating the list to get at the very last of the list" << endl;
+    while (temp->forward)
+    {
+        temp = temp->forward;
+    }
+
+    temp->forward = newNode;
+
+    displayAllNodes(head);
+    return head;
+}
+
+struct node *deleteNode(struct node *head, int dataDel)
+{
+
+    struct node *temp = head, *temp1;
+
+    while (temp)
+    {
+        if (temp->data == dataDel)
+        {
+            return temp->forward;
+        }
+
+        if (temp->forward->data == dataDel)
+        {
+            // temp1 = temp->forward;
+            // temp->forward = temp1->forward;
+            // temp1->forward = NULL;
+            // break;
+            temp->forward = temp->forward->forward;
+            break;
+        }
+
+        temp = temp->forward;
+    }
+
+    return head;
+}
+
+struct node *createNode(int newData)
+{
+    struct node *head = NULL;
+
+    head = (struct node *)malloc(sizeof(struct node *));
+    head->data = newData;
+    head->forward = NULL;
+}
 int main()
 {
-    cout << "Creating the list" << endl;
+    struct node *head = createNode(69);
 
-    struct node *head;
-
-    head = createNode(4);
-    cout << "test" << endl;
-    head = addNodeToList(head, 5);
-    head = addNodeToList(head, 6);
-    head = addNodeToList(head, 7);
-    head = addNodeToList(head, 8);
+    for (int i = 0; i < 10; i++)
+    {
+        head = appendNode(head, i);
+    }
 
     displayAllNodes(head);
 
-    deleteData(head, 7);
+    head = appendNode(head, 69);
+
+    head = deleteNode(head, 3);
+    cout << "Displaying after the deletion" << endl;
 
     displayAllNodes(head);
 }
