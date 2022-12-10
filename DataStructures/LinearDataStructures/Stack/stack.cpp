@@ -10,12 +10,12 @@ private:
 
 public:
     Stack();
-    void createStack(int length);
-    void pushElement(int ele);
-    int topElement();
-    int popElement();
-    bool isEmpty();
-    bool isFull();
+    void createStack(int length); // Creating the stack
+    void pushElement(int ele);    // inserting elements into the top of the element
+    int topElement();             // returns the top of the stack wihtout deletion
+    int popElement();             // Pops the top of the stack (with logical deletion)
+    bool isEmpty();               // Checkts whether the stack is empty or not
+    bool isFull();                // Checks whether the stack is full or not
 };
 
 // Defining the default constructors
@@ -77,11 +77,10 @@ bool Stack::isFull()
     return false;
 }
 
+// Driver function
 int main()
 {
-    Stack s1;
-
-    cout << SIZE_MAX << endl;
+    Stack s1; // Declaring the object
 
     s1.createStack(5);
 
