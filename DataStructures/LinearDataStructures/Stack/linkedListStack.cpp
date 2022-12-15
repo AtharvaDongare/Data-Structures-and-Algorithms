@@ -12,7 +12,7 @@ class LinkedStack{
 		//int head;
 		struct list *head;
 	public:
-		LinkedStack();
+	LinkedStack();
 	void hello();
 	void createStack(int element);
 	void pushStack(int element);
