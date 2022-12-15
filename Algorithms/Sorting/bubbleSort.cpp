@@ -15,6 +15,7 @@ class bubbleSort{
 	void createArray(int size);
 	void displayArray();
 	void bubbleSorting();
+	bool isSorted();
 }; 
 
 bubbleSort::bubbleSort(){
@@ -25,7 +26,7 @@ bubbleSort::bubbleSort(){
 
 
 int bubbleSort::getRandomNumber(int size_){
-	return rand(); // %size_;
+	return rand()%4; // %size_;
 
 }
 
@@ -55,14 +56,26 @@ void bubbleSort::displayArray(){
 
 void bubbleSort::bubbleSorting(){
 	int temp;
-	for (int i=0; i<size-1; i++){
-		if (arr[i] > arr[i+1]){
-			temp = arr[i];
-			arr[i] = arr[i+1]
-			arr[i+1] = temp;
-		}	
+	for (int j=0; j<size; j++)
+	{
+		for (int i=0; i<size-1; i++){
+			if (arr[i] > arr[i+1]){
+				temp = arr[i];
+				arr[i] = arr[i+1];
+				arr[i+1] = temp;
+			}	
+		}
+	}
+}
+
+
+bool bubbleSort::isSorted(){
+	for (int i =0; i< size-1; i++){
+		if (arr[i] > arr[i+1])
+			return false;
 	}
 
+	return true;
 }
 
 int main (){
@@ -70,7 +83,10 @@ int main (){
 	cout << b1.getRandomNumber(6) << endl;
 	b1.createArray(10);
 	b1.displayArray();
-
+	cout << b1.isSorted() << endl;
+	b1.bubbleSorting();
+	b1.displayArray();
+	cout << b1.isSorted() << endl;
 }
 
 
