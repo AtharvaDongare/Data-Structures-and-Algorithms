@@ -1,5 +1,7 @@
 #include<iostream>
 #include<cstdlib>
+#include"arrayOps.h"
+
 using namespace std;
 
 
