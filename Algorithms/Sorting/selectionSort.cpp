@@ -9,10 +9,11 @@ class selection {
 	int size;
 	int * arr;
 	
-	private:
+	public:
 	selection();
 	int getSize();
-	int * getArr();
+	int* getArr();
+	void setArr(int * arr_);
 	void setSize(int size_);
 	void selectionSort();
 	void exchangeData(int loc1, int loc2);
@@ -21,6 +22,7 @@ class selection {
 selection::selection(){
 	size = -1;
 	arr = NULL;
+	cout << "Initiated class variables" << endl;
 }
 
 int selection::getSize(){
@@ -36,6 +38,10 @@ void selection::setSize(int size_){
 	size = size_;
 }
 
+void selection::setArr(int* arr_){
+	arr = arr_ ;
+}
+
 void selection::exchangeData(int loc1, int loc2){
 	int temp = arr[loc1];
 	arr[loc1] = arr[loc2];
@@ -45,8 +51,8 @@ void selection::exchangeData(int loc1, int loc2){
 void selection::selectionSort(){
 	int temp = arr[0], loc;
 	
-	for (int j=0; j<size; j++){
-		for (int i=0; i<size; i++){
+	for (int j=0; j < size; j++){
+		for (int i=0; i < size; i++){
 			if (temp < arr[0]){
 				loc = i;
 				temp = arr[i];
@@ -56,10 +62,13 @@ void selection::selectionSort(){
 	}
 }
 
+
 int main (){
 	selection s1;
 	s1.setSize(10);
-	createArray(s1.getSize(),s1. getArr());
-	displayArray(s1.getArr());
-	isSorted(s1.getArr());
+	int * arr_ = createArray(s1.getSize(), s1.getArr());
+	s1.setArr(arr_);
+	displayArray( s1.getArr(), s1.getSize() );
+	cout << isSorted(s1.getArr(), s1.getSize())<< endl ;
+
 }

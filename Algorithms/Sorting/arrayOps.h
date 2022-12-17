@@ -7,18 +7,25 @@ int getRandomNumber(){
 	return rand()%4;
 }
 
-void createArray(int size_, int * arr){
+int * createArray(int size_, int * arr){
+
 	arr = (int *) malloc (sizeof(int) * size_);
+	cout <<"in function array" << size_ << endl;
 	for (int i=0; i < size_; i++){
-		int temp = getRandomNumber(i+1);
+		int temp = getRandomNumber();
 		arr[i] = temp;
+		cout << arr[i] << " " ;
 	}
+	cout << endl;
+	return arr;
 }
 
-void displayArray(int * arr){
-	for (int i=0 ; i < size ; i++ ){
+void displayArray(int * arr, int size_){
+	cout << size_ << " " << arr << endl;
+	for (int i=0 ; i < size_ ; i++ ){
 		cout << (arr[i]) << " ";
 	}
+
 	cout << endl;
 }
 
@@ -28,8 +35,9 @@ void helloWorld(){
 }
 
 
-bool isSorted(int * arr){
-	for (int i =0; i< size-1; i++){
+bool isSorted(int * arr, int size_ ){
+
+	for (int i =0; i< size_ -1; i++){
 		if (arr[i] > arr[i+1])
 			return false;
 	}
