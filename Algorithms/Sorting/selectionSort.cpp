@@ -50,13 +50,13 @@ void selection::exchangeData(int loc1, int loc2){
 
 void selection::selectionSort(){
 	int temp = arr[0], loc;
-	
+	cout << temp << endl;
 	for (int j=0; j < size; j++){
 		for (int i=0; i < size; i++){
 			if (temp < arr[0]){
 				loc = i;
 				temp = arr[i];
-				exchangeData(loc, i);
+				
 			}
 		}
 	}
@@ -68,6 +68,9 @@ int main (){
 	s1.setSize(10);
 	int * arr_ = createArray(s1.getSize(), s1.getArr());
 	s1.setArr(arr_);
+	displayArray( s1.getArr(), s1.getSize() );
+	cout << isSorted(s1.getArr(), s1.getSize())<< endl ;
+	s1.selectionSort();
 	displayArray( s1.getArr(), s1.getSize() );
 	cout << isSorted(s1.getArr(), s1.getSize())<< endl ;
 
