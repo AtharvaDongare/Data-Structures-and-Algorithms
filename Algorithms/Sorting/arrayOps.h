@@ -8,13 +8,9 @@ int getRandomNumber(){
 }
 
 void createArray(int size_, int * arr){
-	size = size_ ;
-	cout << size << endl;
-	arr = (int *) malloc (sizeof(int) * size);
-	cout << "malloc done" << endl;
-	for (int i=0; i < size; i++){
-		int temp = this->getRandomNumber(i+1);
-		cout << temp << endl;
+	arr = (int *) malloc (sizeof(int) * size_);
+	for (int i=0; i < size_; i++){
+		int temp = getRandomNumber(i+1);
 		arr[i] = temp;
 	}
 }
@@ -23,7 +19,6 @@ void displayArray(int * arr){
 	for (int i=0 ; i < size ; i++ ){
 		cout << (arr[i]) << " ";
 	}
-	
 	cout << endl;
 }
 
