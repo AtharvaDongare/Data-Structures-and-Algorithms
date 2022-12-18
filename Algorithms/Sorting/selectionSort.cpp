@@ -49,16 +49,23 @@ void selection::exchangeData(int loc1, int loc2){
 }
 
 void selection::selectionSort(){
-	int temp = arr[0], loc;
-	cout << temp << endl;
-	for (int j=0; j < size; j++){
-		for (int i=0; i < size; i++){
-			if (temp < arr[0]){
-				loc = i;
-				temp = arr[i];
-				
+	int currMin = arr[0];
+	int currEle = arr[0];
+	int loc = 0;
+
+	for (int j=0; j<size ; j++ ){
+		loc = j;	
+		for (int i=0; i<size; i++){
+			if (arr[i] < currMin){
+				currMin = arr[i];
+				loc = i;		
 			}
 		}
+		cout << currMin << " " << loc << " " << arr[j] << endl;
+		int temp = arr[j];
+		arr[j] = arr[loc];
+		arr[loc] = arr[j];
+		currMin = arr[j];
 	}
 }
 

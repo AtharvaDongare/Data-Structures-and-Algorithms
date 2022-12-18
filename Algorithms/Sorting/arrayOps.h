@@ -10,7 +10,6 @@ int getRandomNumber(){
 int * createArray(int size_, int * arr){
 
 	arr = (int *) malloc (sizeof(int) * size_);
-	cout <<"in function array" << size_ << endl;
 	for (int i=0; i < size_; i++){
 		int temp = getRandomNumber();
 		arr[i] = temp;
@@ -22,6 +21,7 @@ int * createArray(int size_, int * arr){
 
 void displayArray(int * arr, int size_){
 	cout << size_ << " " << arr << endl;
+
 	for (int i=0 ; i < size_ ; i++ ){
 		cout << (arr[i]) << " ";
 	}
@@ -44,5 +44,3 @@ bool isSorted(int * arr, int size_ ){
 
 	return true;
 }
-
-
