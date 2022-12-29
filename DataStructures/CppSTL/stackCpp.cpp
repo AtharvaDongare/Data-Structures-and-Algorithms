@@ -17,6 +17,8 @@ void displayStack(stack <int> s1){
 int main(){
 	stack <int> s1;
 
+	cout << "Implementation of the Stack data structure" << endl;
+
 	for (int i =0 ; i < 10 ; i++ )
 		s1.push(i);
 	
