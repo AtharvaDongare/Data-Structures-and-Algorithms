@@ -6,7 +6,7 @@ using namespace std;
 
 int main () {
 	vector<int> v1 , v2;
-	cout << endl << "Vector are an implementation of array in CPP STL. Vectors are more powerful than normal arrays, since they provide dynamic memory allocation. \nPush and pop operations with requried adjustments in the array elements. We have discussed these default functions below with examples. " << endl;
+	cout << endl << "Vector are an implementation of array in CPP STL. Vectors are more powerful than normal arrays, since they provide dynamic memory allocation. \nPush and pop operations with requried adjustments in the array elements. We have discussed these default functions below with examples. They have continous memory allocation" << endl;
 	for (int i =0 ; i < 10; i++ ){
 		v1.insert( v1.begin() , i);
 	} 
