@@ -1,84 +1,91 @@
-#include<iostream>
+#include <iostream>
+#include "arrayOps.h"
+
 using namespace std;
 
+class selectionSort
+{
+	int *arr = NULL;
+	int size = -1;
 
-#include"arrayOps.h"
-
-
-class selection {
-	int size;
-	int * arr;
-	
-	public:
-	selection();
+public:
+	int *getArr();
 	int getSize();
-	int* getArr();
-	void setArr(int * arr_);
 	void setSize(int size_);
-	void selectionSort();
-	void exchangeData(int loc1, int loc2);
+	void setArr(int *arr_);
+
+	void selectionSorting();
 };
 
-selection::selection(){
-	size = -1;
-	arr = NULL;
-	cout << "Initiated class variables" << endl;
-}
-
-int selection::getSize(){
-	return size;
-}
-
-
-int* selection::getArr(){
+int *selectionSort ::getArr()
+{
 	return arr;
 }
 
-void selection::setSize(int size_){
+int selectionSort ::getSize()
+{
+	return size;
+}
+
+void selectionSort ::setSize(int size_)
+{
 	size = size_;
 }
 
-void selection::setArr(int* arr_){
-	arr = arr_ ;
+void selectionSort ::setArr(int *arr_)
+{
+	arr = arr_;
 }
 
-void selection::exchangeData(int loc1, int loc2){
-	int temp = arr[loc1];
-	arr[loc1] = arr[loc2];
-	arr[loc2] = temp;
-}
+void selectionSort ::selectionSorting()
+{
+	int currMin, currLoc, minLoc, globalMin;
 
-void selection::selectionSort(){
-	int currMin = arr[0];
-	int currEle = arr[0];
-	int loc = 0;
+	currMin = arr[0];
+	currLoc = 0;
+	minLoc = 0;
+	globalMin = arr[0];
 
-	for (int j=0; j<size ; j++ ){
-		loc = j;	
-		for (int i=0; i<size; i++){
-			if (arr[i] < currMin){
-				currMin = arr[i];
-				loc = i;		
+	for (int i = 0; i < size - 1; i++)
+	{
+		currMin = arr[i];
+		globalMin = arr[i];
+		minLoc = i;
+		for (int j = i; j < size; j++)
+		{
+
+			if (arr[j] < globalMin)
+			{
+				globalMin = arr[j];
+				minLoc = j;
 			}
 		}
-		cout << currMin << " " << loc << " " << arr[j] << endl;
-		int temp = arr[j];
-		arr[j] = arr[loc];
-		arr[loc] = arr[j];
-		currMin = arr[j];
+
+		arr[i] = globalMin;
+		arr[minLoc] = currMin;
 	}
 }
 
+int main()
+{
+	// helloWorld();
+	//  cout << " Enter Size of the Array" << endl;
+	//  cin >> size;
 
-int main (){
-	selection s1;
-	s1.setSize(10);
-	int * arr_ = createArray(s1.getSize(), s1.getArr());
-	s1.setArr(arr_);
-	displayArray( s1.getArr(), s1.getSize() );
-	cout << isSorted(s1.getArr(), s1.getSize())<< endl ;
-	s1.selectionSort();
-	displayArray( s1.getArr(), s1.getSize() );
-	cout << isSorted(s1.getArr(), s1.getSize())<< endl ;
+	selectionSort s1;
+	s1.setSize(20);
 
+	s1.setArr(createArray(s1.getSize(), s1.getArr()));
+
+	cout << "Is the array sorted : " << isSorted(s1.getArr(), s1.getSize()) << endl
+		 << endl;
+
+	displayArray(s1.getSize(), s1.getArr());
+
+	s1.selectionSorting();
+
+	cout << "Is the array sorted : " << isSorted(s1.getArr(), s1.getSize()) << endl
+		 << endl;
+
+	displayArray(s1.getSize(), s1.getArr());
 }

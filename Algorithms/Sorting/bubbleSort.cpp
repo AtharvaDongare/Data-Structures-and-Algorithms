@@ -36,7 +36,7 @@ void bubbleSort::createArray(int size_){
 	size = size_ ;
 	cout << size << endl;
 	arr = (int *) malloc (sizeof(int) * size);
-	cout << "malloc done" << endl;
+	cout << "memory allocation compeleted" << endl;
 	for (int i=0; i < size; i++){
 		int temp = this->getRandomNumber(i+1);
 		cout << temp << endl;
@@ -58,6 +58,7 @@ void bubbleSort::displayArray(){
 
 void bubbleSort::bubbleSorting(){
 	int temp;
+	bool flag = true;
 	for (int j=0; j<size; j++)
 	{
 		for (int i=0; i<size-1; i++){
@@ -65,8 +66,16 @@ void bubbleSort::bubbleSorting(){
 				temp = arr[i];
 				arr[i] = arr[i+1];
 				arr[i+1] = temp;
+				flag = false;
 			}	
 		}
+		
+		if (flag)
+		{
+			cout << " Array Sorting Completed" << endl ;
+			return;
+		}
+		flag = true;
 	}
 }
 
