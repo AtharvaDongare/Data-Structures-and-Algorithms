@@ -32,7 +32,7 @@ void displayArray(int size_, int *arr)
 	{
 		cout << (arr[i]) << " ";
 	}
-	cout << "\n Output completed" << endl
+	cout << "\nOutput completed" << endl
 		 << endl;
 	cout << endl;
 }
