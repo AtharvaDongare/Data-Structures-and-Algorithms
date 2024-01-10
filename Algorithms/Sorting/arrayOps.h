@@ -34,7 +34,6 @@ void displayArray(int size_, int *arr)
 	}
 	cout << "\nOutput completed" << endl
 		 << endl;
-	cout << endl;
 }
 
 void helloWorld()
