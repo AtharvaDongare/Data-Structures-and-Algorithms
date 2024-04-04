@@ -84,8 +84,9 @@ void kthElement::getKthElem(int elem)
 
 int kthElement::recurrKth(Node *head, int kth)
 {
+    
     if (head == NULL)
-        return -1;
+        return NULL;
     if (kth == 0)
         return head->data;
 }
